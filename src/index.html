@@ -2,40 +2,56 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Translation Heaven</title>
 
-    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
-    <link rel="stylesheet" href="asset/css/resizable-style.css" />
+    <link rel="stylesheet" href="asset/css/metro-all.min.css">
     <link rel="stylesheet" href="asset/css/index.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Trang</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
+
+    <ul class="h-menu fg-white" id="header">
+      <li>
+        <a href="#"><span class="mif-folder-open2"></span> File</a>
+        <ul class="d-menu" data-role="dropdown">
+          <li><a href="#" data-hotkey="Ctrl+O"><span class="mif-file-text fg-red"></span> Mở file txt</a></li>
+          <li class="divider"></li>
+          <li><a href="#" data-hotkey="Ctrl+P"><span class="mif-file-powerpoint fg-green"></span> Mở project</a></li>
         </ul>
-    </nav>
-    <div class="container-split">
-      <div class="split horizontal">
-        <div class="split vertical">
-          <div>
-            A
-          </div>
-          <div>
-            B
+      </li>
+      <li><a href="#"><span class="mif-paste"></span> Dán dữ liệu tiếng Trung</a></li>
+      <li><a href="#"><span class="mif-replay"></span> Dịch lại</a></li>
+      <li><a href="#"><span class="mif-vertical-align-top"></span> Nạp lại từ điển</a></li>
+      <li class="place-right app-button"><a id="app-exit-button"><span class="mif-cross-light"></span></a></li>
+      <li class="place-right app-button"><a id="app-maximize-button"><span class="mif-chevron-thin-up"></span></a></li>
+      <li class="place-right app-button"><a id="app-minimize-button"><span class="mif-minus"></span></a></li>
+    </ul>
+
+    <div data-role="splitter" class="h-100" data-min-sizes="200" data-split-sizes="30, 70">
+      <div data-role="splitter" data-split-mode="vertical" >
+
+        <div class="d-flex" id="chinese-panel">
+          <div class="panel-tab-label-cont">
+            <a href="#" class="panel-tab-label">Tiếng Trung</a>
           </div>
         </div>
-        <div>
-          C
+
+        <div class="d-flex">
+          <div class="panel-tab-label-cont">
+            <a href="#" class="panel-tab-label">Tiếng Trung</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-flex">
+        <div class="panel-tab-label-cont">
+          <a href="#" class="panel-tab-label">Tiếng Trung</a>
         </div>
       </div>
+
     </div>
-    <script type="module" src="asset/js/bootstrap.bundle.min.js"></script>
-    <script src="asset/js/resizable.js"></script>
+
+    <script type="module" src="asset/js/metro.min.js"></script>
     <script src="asset/js/main.js"></script>
   </body>
 </html>
