@@ -1,7 +1,8 @@
 const { NONAME } = require('dns');
-const { electron, app, BrowserWindow } = require('electron');
+const { electron, app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 require('electron-reload')(__dirname);
+const ipc = ipcMain;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -15,18 +16,43 @@ const createWindow = () => {
     minWidth: 1200,
     height: 900,
     minHeight:800,
+    frame: false,
     webPreferences: {
       nodeIntegration:true,
       contextIsolation: false,
+      preload: path.join(__dirname, 'preload.js')
     }
   });
   mainWindow.removeMenu();
+  mainWindow.setBackgroundColor('#343B48');
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  //closeApp
+  ipc.on('closeApp', () => {
+    mainWindow.close();
+  });
+  ipc.on('maximizeApp', () => {
+    /*if(mainWindow.isMaximized){
+      mainWindow.restore();
+    } else {
+      mainWindow.maximize();
+    }*/
+    mainWindow.maximize();
+    mainWindow.webContents.send('maximized', mainWindow.isMaximized());
+  });
+
+  ipc.on('restoreApp', () => {
+    mainWindow.restore();
+  });
+  
+  ipc.on('minimizeApp', () => {
+    mainWindow.minimize();
+  });
 };
 
 // This method will be called when Electron has finished
