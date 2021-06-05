@@ -4,14 +4,69 @@
     <meta charset="UTF-8">
     <title>Translation Heaven</title>
     <link rel="stylesheet" href="asset/css/metro-all.min.css">
-    <link rel="stylesheet" href="asset/css/index.css">
+    <link rel="stylesheet" href="asset/css/main.css">
     <script type="module" src="asset/js/metro.min.js"></script>
+    <script src="asset/js/split.js"></script>
     <script defer src="asset/js/main.js"></script>
   </head>
   <body>
-    <span class="button" id="minimizeBtn"> Thu nhỏ xuống taskbar</span>
-    <span class="button" id="maximizeBtn"> Phóng to</span>
-    <span class="button" id="restoreBtn"> Thu nhỏ</span>
-    <span class="button" id="closeBtn"> Đóng cửa sổ</span>
+    <header class="header">
+      <div class="header__left">
+        <div class="header__logo">
+          <img src="asset/icon/app-icon.png" alt="">
+        </div>
+        <div class="header__title">Translation Heaven</div>
+        <nav class="header__nav">
+          <ul class="header__nav-item-list">
+            <li class="header__nav-item"><a href="#">File</a></li>
+            <li class="header__nav-item"><a href="#">Quản lý từ điển</a></li>
+            <li class="header__nav-item"><a href="#">Tools</a></li>
+            <li class="header__nav-item"><a href="#">Hướng dẫn sử dụng</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header__right">
+        <span class="header__right--btn mif-minus minimizeBtn" id="minimizeBtn"></span>
+        <span class="header__right--btn mif-enlarge2 maximizeBtn " id="maximizeBtn"></span>
+        <span class="header__right--btn mif-switch closeBtn " id="closeBtn"></span>
+      </div>
+    </header>
+    <div class="main-app">
+      <div class="panel-v left">
+        <div class="panel-h top">
+          <div class="panel-label-cont">
+            <div class="panel-label-tab">
+              <span class="panel-label-tab active">Tiếng Trung</span>
+            </div>
+            <div class="panel-label-button">
+              <button id="language-import" class="mif-paste" data-role="hint" data-hint-text="Nhập tiếng Trung" data-hint-position="bottom" data-cls-hint="drop-shadow"></button>
+            </div>
+          </div>
+          <div class="panel-content" id="language-src">
+              
+          </div>
+        </div>
+      </div>
+      <div class="panel-v right">
+        <div class="panel-h language-one">
+          <div class="panel-label-cont">
+            <div class="panel-label-tab">
+              <span class="panel-label-tab active">Vietphrase một nghĩa</span>
+              <span class="panel-label-tab ">Pinyin</span>
+            </div>
+          </div>
+          <div class="panel-content" id="language-one"></div>
+        </div>
+        <div class="panel-h language-des" id="language-des">
+          <div class="panel-label-cont">
+            <div class="panel-label-tab">
+              <span class="panel-label-tab active">Tiếng Việt</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../src/asset/js/grid-layout.js"></script>
+    <script src="../src/asset/js/editor.js"></script>
   </body>
 </html>

@@ -13,8 +13,8 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1300,
-    minWidth: 1200,
     height: 900,
+    minWidth: 1200,
     minHeight:800,
     frame: false,
     webPreferences: {
@@ -37,17 +37,11 @@ const createWindow = () => {
     mainWindow.close();
   });
   ipc.on('maximizeApp', () => {
-    /*if(mainWindow.isMaximized){
+    if(mainWindow.isMaximized()){
       mainWindow.restore();
     } else {
       mainWindow.maximize();
-    }*/
-    mainWindow.maximize();
-    mainWindow.webContents.send('maximized', mainWindow.isMaximized());
-  });
-
-  ipc.on('restoreApp', () => {
-    mainWindow.restore();
+    }
   });
   
   ipc.on('minimizeApp', () => {
