@@ -2,7 +2,6 @@ const { NONAME } = require('dns');
 const { electron, app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 require('electron-reload')(__dirname);
-const ipc = ipcMain;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -33,18 +32,20 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools();
 
   //closeApp
-  ipc.on('closeApp', () => {
+  ipcMain.on("closeApp", () => {
     mainWindow.close();
   });
-  ipc.on('maximizeApp', () => {
-    if(mainWindow.isMaximized()){
+  ipcMain.on("maximizeApp", () => {
+    if (mainWindow.isMaximized()) {
       mainWindow.restore();
+      mainWindow.webContents.send('maximized','0');
     } else {
       mainWindow.maximize();
+      mainWindow.webContents.send("maximized", "1");
     }
   });
   
-  ipc.on('minimizeApp', () => {
+  ipcMain.on("minimizeApp", () => {
     mainWindow.minimize();
   });
 };
