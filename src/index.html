@@ -460,17 +460,30 @@
       </div>
     </div>
     <div class="window th-dialog" id="window-1624636624086293" data-role-draggable="true" data-role="draggable"
-      style="position: absolute; width: 700px; height: 300px; inset: 111px auto auto 612px;">
+      style="position: absolute; width: 700px; height: 300px; inset: 111px auto auto 412px;">
       <div class="window-caption th-dialog-caption"><span class="title">Nạp từ điển từ file txt QT</span>
         <div class="buttons"><span class="button btn-close sys-button"></span></div>
       </div>
       <div class="window-content th-dialog-content">
         <div data-role-window="true" data-role="window">
           <div class="row mb-2">
-            <label class="cell-sm-2">Chọn file txt</label>
-            <div class="cell-sm-10">
-              <input type="file" class="metro-input" data-role="file" dir="rtl">
-            </div>
+            <input type="file" 
+              class="metro-input border-radius" 
+              data-role="file" 
+              data-mode="drop" 
+              id="importfile" 
+              accept=".txt" 
+              multiple="false">
+          </div>
+          <div class="row mb-2">
+            <button class="button primary mr-5 border-radius" id="import-btn" onclick="Main_app.import_txt_from_QT()">Nhập</button>
+            <button class="button border-radius bg-grayBlue-hover" onclick="Main_app.close_dialog('importTxtFromQT')">Exit</button>
+          </div>
+          <div class="row mb-2 d-none loading-text">
+            <label class="fg-white">Quá trình có thể diễn ra khá lâu nếu dữ liệu file lớn</label>
+          </div>
+          <div class="row mb-2 d-none loading-text">
+            <span class="mif-spinner3 ani-pulse fg-white"></span>
           </div>
         </div>
       </div>

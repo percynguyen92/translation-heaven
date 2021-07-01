@@ -36,7 +36,7 @@ var Main_app = {
     clsWindow: "th-dialog",
     clsCaption: "th-dialog-caption",
     clsContent: "th-dialog-content",
-    //draggable: false,
+    draggable: true,
     resizable: false,
     btnMax: false,
     btnMin: false,
@@ -56,8 +56,8 @@ var Main_app = {
     var i = 0;
     var data_ptag = [];
     for (let index = 0; index < data.length; index++) {
-      const e = data[index].trim();
-      if (!(e.length == 0)) {
+      var e = data[index].trim();
+      if (e.length != 0) {
         data_ptag[i] = "<p>" + e + "</p>";
         i++;
       }
@@ -78,6 +78,38 @@ var Main_app = {
       title: "Nạp từ điển từ file txt QT",
     });
   },
+  close_dialog : function (dialogName) {
+    //console.log(dialogName);
+    this.dialogs[dialogName].close();
+  },
+  import_txt_from_QT : function () {
+    //Chuyển đổi file txt thư viện của Quick Translator sang dạng json
+
+    var el = $('#importfile')
+    var file = el.prop('files')[0];
+    if(file) {
+      //nếu đã chọn file
+      //gửi file_path về xử lý
+      ipcRenderer.invoke('import_txt', file.path).then( function (result){
+        //console.log('asdasd' + result);
+      });
+
+      //bật loading text và disable nút Nhập
+      var loadingText = $(".window").find(".loading-text");
+      var importBtn = $(".window").find("#import-btn");
+      if (loadingText.hasClass("d-none")) {
+        loadingText.removeClass("d-none");
+      }
+      if (importBtn.hasClass('disable')){
+        importBtn.addClass('disable')
+      }
+      //console.log(file.path);
+    } else {
+      //thông báo nếu không chọn file nào
+      var toast = Metro.toast.create;
+      toast("Chưa chọn file txt nào!!!", null, null, "bg-red fg-white ani-horizontal");
+    }
+  }
 };
 
 Main_app.setup();

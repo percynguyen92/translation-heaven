@@ -4,6 +4,7 @@
     --title-background: linear-gradient(90deg, rgba(18,20,23,1) 0%, rgba(31,34,39,1) 35%, rgba(1,51,61,1) 100%);
     --text-color: #ffffff;
     --panel-title-text: #cfd0d1;
+    --btn-submit: #5192e7;
     --btn-hover-red: #E76F51;
     --border-color: #2c2f34;
 }
@@ -343,5 +344,34 @@ html, body{
 
 .draggable{
     animation: none;
+}
+
+.window label{
+    color: var(--text-color);
+}
+
+.window .row{
+    justify-content: center;
+    align-content: center;
+}
+
+.color-picker, .file, .input, .metro-input, .select, .spinner, .tag-input, .textarea {
+   height: 30px; 
+}
+
+.window .button{
+    height: 30px;
+}
+
+.window .file .button{
+    height: 27px;
+}
+
+.window .drop-zone.caption{
+    display: none;
+}
+
+.window .drop-zone .files{
+    color: black;
 }
 /*Diaglog Setting - End*/

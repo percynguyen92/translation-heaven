@@ -1,7 +1,9 @@
 const { NONAME } = require('dns');
 const { electron, app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-require('electron-reload')(__dirname);
+require("electron-reload")(__dirname, {
+  electron: path.join(process.cwd(), "node_modules", ".bin", "electron"),
+});
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -48,7 +50,18 @@ const createWindow = () => {
   ipcMain.on("minimizeApp", () => {
     mainWindow.minimize();
   });
+
+
+  ipcMain.handle("import_txt", async (event, arg) => {
+    const result = await example(arg);
+    return result;
+  });
+
 };
+
+const example = (arg) => {
+  return arg;
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
